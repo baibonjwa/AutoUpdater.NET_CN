@@ -87,6 +87,11 @@ namespace AutoUpdaterDotNET
         public static RemindLaterFormat RemindLaterTimeSpan = RemindLaterFormat.Days;
 
         /// <summary>
+        /// Ingore remindlater check update at once
+        /// </summary>
+        public static bool CheckAtOnce { get; set; }
+
+        /// <summary>
         ///     A delegate type for hooking up update notifications.
         /// </summary>
         /// <param name="args">An object containing all the parameters recieved from AppCast XML file. If there will be an error while looking for the XML file then this object will be null.</param>
@@ -126,8 +131,8 @@ namespace AutoUpdaterDotNET
         {
             Assembly mainAssembly = Assembly.GetEntryAssembly();
             var companyAttribute =
-                (AssemblyCompanyAttribute) GetAttribute(mainAssembly, typeof (AssemblyCompanyAttribute));
-            var titleAttribute = (AssemblyTitleAttribute) GetAttribute(mainAssembly, typeof (AssemblyTitleAttribute));
+                (AssemblyCompanyAttribute)GetAttribute(mainAssembly, typeof(AssemblyCompanyAttribute));
+            var titleAttribute = (AssemblyTitleAttribute)GetAttribute(mainAssembly, typeof(AssemblyTitleAttribute));
             AppTitle = titleAttribute != null ? titleAttribute.Title : mainAssembly.GetName().Name;
             string appCompany = companyAttribute != null ? companyAttribute.Company : "";
 
@@ -148,7 +153,7 @@ namespace AutoUpdaterDotNET
 
                     int compareResult = DateTime.Compare(DateTime.Now, remindLater);
 
-                    if (compareResult < 0)
+                    if (compareResult < 0 && CheckAtOnce == false)
                     {
                         var updateForm = new UpdateForm(true);
                         updateForm.SetTimer(remindLater);
@@ -225,8 +230,8 @@ namespace AutoUpdaterDotNET
                         XmlNode appCastUrl64 = item.SelectSingleNode("url64");
 
                         var downloadURL64 = GetURL(webResponse.ResponseUri, appCastUrl64);
-                        
-                        if(!string.IsNullOrEmpty(downloadURL64))
+
+                        if (!string.IsNullOrEmpty(downloadURL64))
                         {
                             DownloadURL = downloadURL64;
                         }
@@ -299,7 +304,7 @@ namespace AutoUpdaterDotNET
                     temp = uri.AbsoluteUri;
                 }
             }
-            
+
             return temp;
         }
 
@@ -317,7 +322,7 @@ namespace AutoUpdaterDotNET
             {
                 return null;
             }
-            return (Attribute) attributes[0];
+            return (Attribute)attributes[0];
         }
 
         /// <summary>

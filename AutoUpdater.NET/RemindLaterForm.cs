@@ -9,6 +9,8 @@ namespace AutoUpdaterDotNET
 
         public int RemindLaterAt { get; private set; }
 
+        public bool CheckAtOnce { get; private set; }
+
         public RemindLaterForm()
         {
             InitializeComponent();
@@ -55,6 +57,7 @@ namespace AutoUpdaterDotNET
                         RemindLaterAt = 10;
                         break;
                 }
+                AutoUpdater.CheckAtOnce = false;
                 DialogResult = DialogResult.OK;
             }
             else

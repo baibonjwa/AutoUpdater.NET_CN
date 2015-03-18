@@ -81,6 +81,7 @@ namespace AutoUpdaterTest
 
         private void buttonCheckForUpdate_Click(object sender, EventArgs e)
         {
+            AutoUpdater.CheckAtOnce = true;
             AutoUpdater.Start("http://rbsoft.org/updates/right-click-enhancer.xml");
         }
     }
