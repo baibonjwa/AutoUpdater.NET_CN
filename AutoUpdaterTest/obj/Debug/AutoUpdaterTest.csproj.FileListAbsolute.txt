@@ -13,3 +13,5 @@ C:\Users\happybai\Downloads\autoupdaterdotnet-32362\AutoUpdater.NET\trunk\AutoUp
 C:\Users\happybai\Downloads\autoupdaterdotnet-32362\AutoUpdater.NET\trunk\AutoUpdaterTest\obj\Debug\AutoUpdaterTest.csproj.GenerateResource.Cache
 C:\Users\happybai\Downloads\autoupdaterdotnet-32362\AutoUpdater.NET\trunk\AutoUpdaterTest\obj\Debug\AutoUpdaterTest.exe
 C:\Users\happybai\Downloads\autoupdaterdotnet-32362\AutoUpdater.NET\trunk\AutoUpdaterTest\obj\Debug\AutoUpdaterTest.pdb
+D:\projects\AutoUpdater.NET_CN\AutoUpdaterTest\obj\Debug\AutoUpdaterTest.exe
+D:\projects\AutoUpdater.NET_CN\AutoUpdaterTest\obj\Debug\AutoUpdaterTest.pdb

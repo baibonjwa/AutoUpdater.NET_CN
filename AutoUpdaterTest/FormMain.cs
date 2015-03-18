@@ -15,11 +15,11 @@ namespace AutoUpdaterTest
         private void FormMain_Load(object sender, EventArgs e)
         {
             //uncomment below line to see russian version
-            
+
             //AutoUpdater.CurrentCulture = CultureInfo.CreateSpecificCulture("ru");
 
             //If you want to open download page when user click on download button uncomment below line.
- 
+
             //AutoUpdater.OpenDownloadPage = true;
 
             //Don't want user to select remind later time in AutoUpdater notification window then uncomment 3 lines below so default remind later time will be set to 2 days.
@@ -35,7 +35,7 @@ namespace AutoUpdaterTest
             //AutoUpdater.Start("http://rbsoft.org/updates/right-click-enhancer.xml");
         }
 
-        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        private static void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
         {
             if (args != null)
             {
@@ -44,8 +44,8 @@ namespace AutoUpdaterTest
                     var dialogResult =
                         MessageBox.Show(
                             string.Format(
-                                "There is new version {0} avilable. You are using version {1}. Do you want to update the application now?",
-                                args.CurrentVersion, args.InstalledVersion), @"Update Available",
+                                "现在有新的版本 {0} 可以使用. 当前版本为 {1}。您想现在更新该软件么?",
+                                args.CurrentVersion, args.InstalledVersion), @"有可用的更新",
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Information);
 
@@ -66,16 +66,17 @@ namespace AutoUpdaterTest
                 }
                 else
                 {
-                    MessageBox.Show(@"There is no update avilable please try again later.", @"No update available",
+                    MessageBox.Show(@"现在没有可用的更新，请稍后再试。", @"没有可用的更新",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 MessageBox.Show(
-                       @"There is a problem reaching update server please check your internet connection and try again later.",
-                       @"Update check failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       @"访问服务器时出现了一个问题，请检查您的网络连接，然后稍候再试。",
+                       @"更新检查失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void buttonCheckForUpdate_Click(object sender, EventArgs e)
